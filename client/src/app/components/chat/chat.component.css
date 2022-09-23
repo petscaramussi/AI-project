@@ -9,7 +9,7 @@
 
 ::selection{
   background:hsl(0, 0%, 0%);
-  color:#04b4a9;
+  color:#FF6565;
 }
 
 /* width */
@@ -56,15 +56,15 @@ img{
 }
 
 .chat{
-  margin-left: 5%;
+  margin-left: 30%;
+  margin-top: 5%;
   width:80%;
   height: 80%;
-  max-width:500px;
+  max-width:700px;
   min-width:350px;
-  max-height:600px;
+  max-height:800px;
   border-radius:7px;
   background:white;
-  box-shadow:0 0 10px hsla(0, 0%, 0%, 0.2);
   overflow:hidden;
   display:grid;
   grid-template-rows:80% 20%;
@@ -106,7 +106,7 @@ img{
 
 .text.sent .text-content{
   border-radius:20px 0px 20px 20px;
-  background:#04b4a9;
+  background: #b56576;
   color:white;
 }
 
@@ -202,7 +202,7 @@ button{
   height:60px;
   font-size:2rem;
   border-radius:50%;
-  background:#04b4a9;
+  background:#e56b6f;
   color:white;
   display:grid;
   place-items:center;
