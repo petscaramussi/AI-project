@@ -55,7 +55,7 @@ img{
   max-width:100%;
 }
 
-.chat{
+.chat{ 
   margin-left: 30%;
   margin-top: 5%;
   width:80%;
@@ -133,7 +133,7 @@ img{
   background:hsl(220, 20%, 94%);
   padding:1.5rem;
   border-radius:0px 20px 20px 20px;
-  font-size:0.8rem;
+  font-size:1.0rem;
   line-height:130%;
   letter-spacing:0.5px;
 }
@@ -202,7 +202,7 @@ button{
   height:60px;
   font-size:2rem;
   border-radius:50%;
-  background:#e56b6f;
+  background:#b56576;
   color:white;
   display:grid;
   place-items:center;
