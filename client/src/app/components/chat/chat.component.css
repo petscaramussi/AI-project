@@ -7,10 +7,7 @@
 }
 
 
-::selection{
-  background:hsl(0, 0%, 0%);
-  color:#FF6565;
-}
+
 
 /* width */
 ::-webkit-scrollbar {
