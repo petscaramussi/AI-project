@@ -1,4 +1,6 @@
-import { Component, Input} from '@angular/core';
+import { Component} from '@angular/core';
+import { MatSnackBar} from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-chat',
@@ -7,31 +9,36 @@ import { Component, Input} from '@angular/core';
 })
 export class ChatComponent {
 
-   hours = new Date;
-   regex = /^\d*\,?\d*$/;
-   currentTime = this.hours.getHours() + ":" + this.hours.getMinutes();
+  constructor(private snackBar: MatSnackBar, private _router: Router) { }
+
+  ngOnInit(): void {}
 
 
-   msgsUser: Array<any> = [{
+
+  hours = new Date;
+  regex = /^\d*\,?\d*$/;
+  currentTime = this.hours.getHours() + ":" + this.hours.getMinutes();
+
+
+  msgsUser: Array<any> = [{
     nick: 'bot',
     msg: ` Olá, seja vem vido a nossa pizzaria! Para iniciar, digite o seu nome, ou como você gostaria de ser chamado 👋`
    }];
-   msgsBot: Array<string> = [];
 
-   userSeparatedMsg = '';
+  msgsBot: Array<string> = [];
 
-   nomeUser = '';
-   pedidoUser = '';
-   bebidaUser = '';
+  userSeparatedMsg = '';
+
+  nomeUser = '';
+  pedidoUser = '';
+  bebidaUser = '';
 
    controler: number = 0;
 
 
-  constructor() { }
+  
 
-  ngOnInit(): void {
 
-  }
 
   onUpdateMessage(): void {
 
@@ -43,6 +50,8 @@ export class ChatComponent {
         this.inputCleanAndDown();
         this.msgsUser.push({nick: 'bot', msg: `certo, anotado`});
         this.msgsUser.push({nick: 'bot', msg: ` ✔️ pedido finalizado`});
+        console.log(this.nomeUser, this.pedidoUser, this.bebidaUser);
+        this.showMessage();
 
         //show on console client order
         console.log('nome: ' + this.nomeUser + ' | pedido: ' + this.pedidoUser + ' | bebida: ' + this.bebidaUser);
@@ -69,10 +78,12 @@ export class ChatComponent {
       else if(this.userSeparatedMsg == 'não'){
         this.inputCleanAndDown();
         this.msgsUser.push({nick: 'bot', msg: ` ✔️ pedido finalizado`});
+        console.log(this.nomeUser, this.pedidoUser, this.bebidaUser);
+        this.showMessage();
       }
       else if(this.userSeparatedMsg != 'sim' && this.userSeparatedMsg != 'não'){
         this.errorMessage();
-      }
+      } 
     }
 
 
@@ -123,6 +134,20 @@ export class ChatComponent {
   inputCleanAndDown(){
     this.userSeparatedMsg = '';
     document.getElementById("input")?.click();
+  }
+
+  showMessage(){
+    this.snackBar.open('Redirecionando...', 'X' ,{
+      duration: 4000,
+      verticalPosition: "top"
+    });
+    
+    setTimeout(() => {
+      this._router.navigate(['/confirm']);
+    }, 4000);
+    
+
+
   }
 
 }
