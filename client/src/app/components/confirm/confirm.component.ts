@@ -12,6 +12,4 @@ export class ConfirmComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  pizzas: Array<any> = ['Calabresa', 'Mussarela', 'Outra'];
-
 }
