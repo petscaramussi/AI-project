@@ -1,1 +1,9 @@
-<p>confirm works!</p>
+<h1>Assim ficou seu pedido! Agora é só confirmar ✌️</h1>
+<div *ngFor="let pizza of pizzas">
+<p >1 Pizza de {{ pizza }} - R$ 40 </p>
+</div>
+<div class="centerBtn">
+<button mat-flat-button class="btnConfirm">Confirmar Pedido</button>
+<br>
+<button mat-stroked-button class="btnCancel">Refazer Pedido</button>
+</div>
