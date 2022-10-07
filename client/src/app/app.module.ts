@@ -10,6 +10,7 @@ import { FormsModule } from '@angular/forms';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ConfirmComponent } from './components/confirm/confirm.component';
 import { MatButtonModule } from '@angular/material/button'
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { MatButtonModule } from '@angular/material/button'
     MatToolbarModule,
     FormsModule,
     MatSnackBarModule,
-    MatButtonModule
+    MatButtonModule,
+    HttpClientModule 
   ],
   providers: [],
   bootstrap: [AppComponent]
