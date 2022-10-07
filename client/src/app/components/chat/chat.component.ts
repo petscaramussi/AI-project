@@ -1,23 +1,30 @@
-import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+
+import { Component, Input } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { ChatService } from '../chat.service';
 
 @Component({
     selector: 'app-chat',
     templateUrl: './chat.component.html',
-    styleUrls: ['./chat.component.css']
+    styleUrls: ['./chat.component.css'],
+    providers: [{useClass: ChatService, provide: ChatService}]
 })
+
 export class ChatComponent {
 
+     
+
     constructor(private snackBar: MatSnackBar, 
-                private _router: Router, 
-                private http : HttpClient) 
+                private _router: Router,
+                private chatService: ChatService) 
     {
-        this.generateRandomCharacter();
+
     }
 
-    ngOnInit(): void { }
+    ngOnInit(): void { 
+      
+    }
 
     hours = new Date;
     regex = /^\d*\,?\d*$/;
@@ -36,14 +43,12 @@ export class ChatComponent {
     pedidoUser = '';
     bebidaUser = '';
 
+  
+
     controler: number = 0;
 
-    generateRandomCharacter() {
-        const random = Math.floor(Math.random() * 100000)
-        this.http.get(`https://avatars.dicebear.com/api/adventurer/${random}.svg`, {responseType: 'text'}).subscribe(result => {
-            document.body.insertAdjacentHTML("afterbegin", result);
-        });
-    }
+  
+ 
 
     onUpdateMessage(): void {
         switch (this.controler) {
@@ -81,7 +86,11 @@ export class ChatComponent {
                     this.inputCleanAndDown();
                     this.msgsUser.push({ nick: 'bot', msg: ` ✔️ pedido finalizado` });
                     console.log(this.nomeUser, this.pedidoUser, this.bebidaUser);
+                    this.chatService.dados.emit({nomeUser: this.nomeUser, pedidoUser: this.pedidoUser, bebidaUser: this.bebidaUser});
                     this.showMessage();
+                    // nomeUser = '';
+                    //pedidoUser = '';
+                    //bebidaUser = '';
                 }
                 else if (this.userSeparatedMsg != 'sim' && this.userSeparatedMsg != 'não') this.errorMessage();
 
@@ -104,6 +113,7 @@ export class ChatComponent {
             case 0:
                 this.msgsUser.push({ nick: 'user', msg: this.userSeparatedMsg });
                 this.nomeUser = this.userSeparatedMsg;
+                this.chatService.dados.emit({nomeUser: this.nomeUser, pedidoUser: this.pedidoUser, bebidaUser: this.bebidaUser});
                 this.inputCleanAndDown();
                 this.msgsUser.push({ nick: 'bot', msg: `Ok, ${this.nomeUser}` });
                 this.msgsUser.push({

@@ -11,6 +11,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ConfirmComponent } from './components/confirm/confirm.component';
 import { MatButtonModule } from '@angular/material/button'
 import { HttpClientModule } from '@angular/common/http';
+import { ChatService } from './components/chat.service';
 
 @NgModule({
   declarations: [
@@ -27,9 +28,9 @@ import { HttpClientModule } from '@angular/common/http';
     FormsModule,
     MatSnackBarModule,
     MatButtonModule,
-    HttpClientModule 
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [ChatService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
