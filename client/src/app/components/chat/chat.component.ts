@@ -29,7 +29,7 @@ export class ChatComponent {
 
     msgsUser: Array<any> = [{
         nick: 'bot',
-        msg: ` Olá, seja vem vido a nossa pizzaria! Para iniciar, digite o seu nome, ou como você gostaria de ser chamado 👋`
+        msg: ` Olá, seja bem vindo a nossa pizzaria! Para iniciar, digite o seu nome, ou como você gostaria de ser chamado 👋`
     }];
 
     msgsBot: Array<string> = [];
@@ -59,10 +59,7 @@ export class ChatComponent {
                     this.msgsUser.push({ nick: 'bot', msg: ` ✔️ pedido finalizado` });
                     console.log(this.nomeUser, this.pedidoUser, this.bebidaUser);
                     //set user option on local storage
-                    localStorage.clear();
-                    localStorage.setItem("nomeUser", this.nomeUser);
-                    localStorage.setItem("pedidoUser", this.pedidoUser);
-                    localStorage.setItem("bebidaUser", this.bebidaUser);
+                    this.localStorageSet();
                     this.showMessage();
                     console.log('nome: ' + this.nomeUser + ' | pedido: ' + this.pedidoUser + ' | bebida: ' + this.bebidaUser);
 
@@ -88,6 +85,7 @@ export class ChatComponent {
                     this.inputCleanAndDown();
                     this.msgsUser.push({ nick: 'bot', msg: ` ✔️ pedido finalizado` });
                     console.log(this.nomeUser, this.pedidoUser, this.bebidaUser);
+                    this.localStorageSet()
                     this.showMessage();
                     // nomeUser = '';
                     //pedidoUser = '';
@@ -149,5 +147,12 @@ export class ChatComponent {
         setTimeout(() => {
             this._router.navigate(['/confirm']);
         }, 4000);
+    }
+
+    localStorageSet(){
+        localStorage.clear();
+        localStorage.setItem("nomeUser", this.nomeUser);
+        localStorage.setItem("pedidoUser", this.pedidoUser);
+        localStorage.setItem("bebidaUser", this.bebidaUser);
     }
 }

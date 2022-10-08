@@ -3,12 +3,12 @@
 <p >1 Pizza de {{ pizzas.tipo }} - R$ {{pizzas.preco}} </p>
 </div>
 <div *ngFor="let bebidas of getBebidas()">
-<p >1 Bebida {{ bebidas.tipo }} - R$ {{bebidas.preco}} </p>
+<p *ngIf="bebida != ''">1 Bebida {{ bebidas.tipo }} - R$ {{bebidas.preco}} </p>
 </div>
 <br>
 <p class="total">Total: R$ {{getTotal()}}</p>
 <div class="centerBtn">
-<button mat-flat-button class="btnConfirm">Confirmar Pedido</button>
+<button mat-flat-button class="btnConfirm" (click)="confirmMessage()">Confirmar Pedido</button>
 <br>
-<button mat-stroked-button class="btnCancel">Refazer Pedido</button>
+<button mat-stroked-button class="btnCancel" (click)="redirectChat()">Refazer Pedido</button>
 </div>

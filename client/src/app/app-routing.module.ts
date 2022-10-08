@@ -11,7 +11,7 @@ const routes: Routes = [
   },
   {
     path: 'confirm',
-    component: ConfirmComponent
+    component: ConfirmComponent,
   }
 ];
 

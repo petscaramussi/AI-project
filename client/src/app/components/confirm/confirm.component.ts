@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-confirm',
@@ -13,6 +15,9 @@ export class ConfirmComponent implements OnInit {
 
   bebidasSoma = 0;
   pizzaSoma = 0;
+
+  constructor(private snackBar: MatSnackBar, 
+                private _router: Router) {}
   
   
   ngOnInit(): void{
@@ -73,7 +78,18 @@ export class ConfirmComponent implements OnInit {
 
     let sumPizzas: any = this.getPizzas().map((item: { preco: any; }) => item.preco).reduce((prev: any, curr: any) => prev + curr, 0);
     console.log(sumPizzas);
-    return sumBebidas + sumPizzas  
+    return sumBebidas || 0 + sumPizzas || 0  
+  }
+
+  confirmMessage(){
+    this.snackBar.open('Confirmado', 'X', {
+      duration: 2000,
+      verticalPosition: "top"
+    });
+  }
+
+  redirectChat(){
+    this._router.navigate(['']);
   }
 
 
