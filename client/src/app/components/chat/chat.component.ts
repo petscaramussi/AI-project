@@ -2,13 +2,11 @@
 import { Component, Input } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { ChatService } from '../chat.service';
 
 @Component({
     selector: 'app-chat',
     templateUrl: './chat.component.html',
-    styleUrls: ['./chat.component.css'],
-    providers: [{useClass: ChatService, provide: ChatService}]
+    styleUrls: ['./chat.component.css']
 })
 
 export class ChatComponent {
@@ -16,8 +14,7 @@ export class ChatComponent {
      
 
     constructor(private snackBar: MatSnackBar, 
-                private _router: Router,
-                private chatService: ChatService) 
+                private _router: Router) 
     {
 
     }
@@ -61,6 +58,11 @@ export class ChatComponent {
                     this.msgsUser.push({ nick: 'bot', msg: `certo, anotado` });
                     this.msgsUser.push({ nick: 'bot', msg: ` ✔️ pedido finalizado` });
                     console.log(this.nomeUser, this.pedidoUser, this.bebidaUser);
+                    //set user option on local storage
+                    localStorage.clear();
+                    localStorage.setItem("nomeUser", this.nomeUser);
+                    localStorage.setItem("pedidoUser", this.pedidoUser);
+                    localStorage.setItem("bebidaUser", this.bebidaUser);
                     this.showMessage();
                     console.log('nome: ' + this.nomeUser + ' | pedido: ' + this.pedidoUser + ' | bebida: ' + this.bebidaUser);
 
@@ -86,7 +88,6 @@ export class ChatComponent {
                     this.inputCleanAndDown();
                     this.msgsUser.push({ nick: 'bot', msg: ` ✔️ pedido finalizado` });
                     console.log(this.nomeUser, this.pedidoUser, this.bebidaUser);
-                    this.chatService.dados.emit({nomeUser: this.nomeUser, pedidoUser: this.pedidoUser, bebidaUser: this.bebidaUser});
                     this.showMessage();
                     // nomeUser = '';
                     //pedidoUser = '';
@@ -113,7 +114,6 @@ export class ChatComponent {
             case 0:
                 this.msgsUser.push({ nick: 'user', msg: this.userSeparatedMsg });
                 this.nomeUser = this.userSeparatedMsg;
-                this.chatService.dados.emit({nomeUser: this.nomeUser, pedidoUser: this.pedidoUser, bebidaUser: this.bebidaUser});
                 this.inputCleanAndDown();
                 this.msgsUser.push({ nick: 'bot', msg: `Ok, ${this.nomeUser}` });
                 this.msgsUser.push({

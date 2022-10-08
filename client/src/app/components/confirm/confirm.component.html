@@ -1,7 +1,12 @@
-<h1>Assim ficou seu pedido! Agora é só confirmar ✌️</h1>
-<div *ngFor="let pizza of pizzas">
-<p >1 Pizza de {{ pizza }} - R$ 40 </p>
+<h1>{{ nome }}, assim ficou seu pedido. Agora é só confirmar ✌️</h1>
+<div *ngFor="let pizzas of getPizzas()">
+<p >1 Pizza de {{ pizzas.tipo }} - R$ {{pizzas.preco}} </p>
 </div>
+<div *ngFor="let bebidas of getBebidas()">
+<p >1 Bebida {{ bebidas.tipo }} - R$ {{bebidas.preco}} </p>
+</div>
+<br>
+<p class="total">Total: R$ {{getTotal()}}</p>
 <div class="centerBtn">
 <button mat-flat-button class="btnConfirm">Confirmar Pedido</button>
 <br>

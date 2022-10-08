@@ -11,7 +11,6 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ConfirmComponent } from './components/confirm/confirm.component';
 import { MatButtonModule } from '@angular/material/button'
 import { HttpClientModule } from '@angular/common/http';
-import { ChatService } from './components/chat.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +29,7 @@ import { ChatService } from './components/chat.service';
     MatButtonModule,
     HttpClientModule,
   ],
-  providers: [ChatService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
