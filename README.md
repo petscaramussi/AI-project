@@ -22,7 +22,7 @@
 - [Angular-Material](https://material.angular.io/)
 
  ## Prints
-<img src="https://github.com/petscaramussi/images/blob/main/1.PNG" width="50%" hight="50%">
-<img src="https://github.com/petscaramussi/images/blob/main/2.PNG" width="50%" hight="50%">
-<img src="https://github.com/petscaramussi/images/blob/main/3.PNG" width="50%" hight="50%">
+<img src="https://github.com/petscaramussi/AI-project/blob/main/prints/1.PNG" width="50%" hight="50%">
+<img src="https://github.com/petscaramussi/AI-project/blob/main/prints/2.PNG" width="50%" hight="50%">
+<img src="https://github.com/petscaramussi/AI-project/blob/main/prints/3.PNG" width="50%" hight="50%">
  
