@@ -85,7 +85,8 @@ export class ChatComponent {
                     this.inputCleanAndDown();
                     this.msgsUser.push({ nick: 'bot', msg: ` ✔️ pedido finalizado` });
                     console.log(this.nomeUser, this.pedidoUser, this.bebidaUser);
-                    this.localStorageSet()
+                    this.bebidaUser = '0';
+                    this.localStorageSet();
                     this.showMessage();
                     // nomeUser = '';
                     //pedidoUser = '';

@@ -3,7 +3,7 @@
 <p >1 Pizza de {{ pizzas.tipo }} - R$ {{pizzas.preco}} </p>
 </div>
 <div *ngFor="let bebidas of getBebidas()">
-<p *ngIf="bebida != ''">1 Bebida {{ bebidas.tipo }} - R$ {{bebidas.preco}} </p>
+<p *ngIf="!isNaN">1 Bebida {{ bebidas.tipo }} - R$ {{bebidas.preco}} </p>
 </div>
 <br>
 <p class="total">Total: R$ {{getTotal()}}</p>

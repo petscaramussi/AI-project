@@ -1,3 +1,4 @@
+import { _isNumberValue } from '@angular/cdk/coercion';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
@@ -12,6 +13,8 @@ export class ConfirmComponent implements OnInit {
   nome = localStorage.getItem('nomeUser');
   pizza = localStorage.getItem('pedidoUser');
   bebida = localStorage.getItem('bebidaUser');
+
+  isNaN = false;
 
   bebidasSoma = 0;
   pizzaSoma = 0;
@@ -59,7 +62,8 @@ export class ConfirmComponent implements OnInit {
     });    
 
     for(let i = 0; i < bebidaNome.length; i++){
-      if(bebidaNome[i] == 1) bebidaNome[i] = {tipo: 'Suco', preco: 4};
+      if (bebidaNome[i] == 0) {bebidaNome[i] = {tipo: 'Nada', preco: 0}; this.isNaN = true}
+      else if(bebidaNome[i] == 1) bebidaNome[i] = {tipo: 'Suco', preco: 4};
       else if(bebidaNome[i] == 2) bebidaNome[i] = {tipo: 'Cerveja', preco: 6};
       else if(bebidaNome[i] == 3) bebidaNome[i] = {tipo: 'Vinho', preco: 10};
     }
@@ -78,7 +82,13 @@ export class ConfirmComponent implements OnInit {
 
     let sumPizzas: any = this.getPizzas().map((item: { preco: any; }) => item.preco).reduce((prev: any, curr: any) => prev + curr, 0);
     console.log(sumPizzas);
-    return sumBebidas || 0 + sumPizzas || 0  
+
+    
+
+    let soma = sumBebidas + sumPizzas;
+
+    return soma;
+    
   }
 
   confirmMessage(){
