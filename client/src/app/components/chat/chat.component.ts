@@ -1,5 +1,5 @@
 
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 
@@ -24,7 +24,7 @@ export class ChatComponent {
     }
 
     hours = new Date;
-    regex = /^\d*\,?\d*$/;
+    regex = /^[,1-4]+$/;
     currentTime = this.hours.getHours() + ":" + this.hours.getMinutes();
 
     msgsUser: Array<any> = [{
