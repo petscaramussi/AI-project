@@ -7,7 +7,7 @@
 
     <div class="text" *ngIf="messages.nick == 'bot'">
       <div class="profile-pic"> <img
-          src="https://avatars.dicebear.com/api/bottts/re.svg"
+          src="/assets/images/bot.svg"
           alt=""> </div>
       <div class="text-content">
         <h5 style="opacity: 0.6;">Bot</h5>
@@ -19,7 +19,7 @@
 
     <div class="text sent" *ngIf="messages.nick != 'bot'">
       <div class="profile-pic"><img
-          src="https://avatars.dicebear.com/api/pixel-art-neutral/12.svg"
+          src="/assets/images/user.svg"
           alt=""></div>
       <div class="text-content">
         <h5 style="opacity: 0.6;">Cliente</h5>{{messages.msg}}<span class="timestamp">{{ currentTime}}</span>

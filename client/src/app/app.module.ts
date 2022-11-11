@@ -11,13 +11,19 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ConfirmComponent } from './components/confirm/confirm.component';
 import { MatButtonModule } from '@angular/material/button'
 import { HttpClientModule } from '@angular/common/http';
+import { PaymentComponent } from './components/payment/payment.component';
+import { PixComponent } from './components/pix/pix.component';
+import { PayEntregaComponent } from './components/pay-entrega/pay-entrega.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     ChatComponent,
-    ConfirmComponent
+    ConfirmComponent,
+    PaymentComponent,
+    PixComponent,
+    PayEntregaComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +34,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatSnackBarModule,
     MatButtonModule,
     HttpClientModule,
+    BrowserModule
   ],
   providers: [],
   bootstrap: [AppComponent]

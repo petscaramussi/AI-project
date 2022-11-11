@@ -92,10 +92,14 @@ export class ConfirmComponent implements OnInit {
   }
 
   confirmMessage(){
-    this.snackBar.open('Confirmado', 'X', {
+    this.snackBar.open('Redirecionando para pagamento', 'X', {
       duration: 2000,
       verticalPosition: "top"
     });
+
+    setTimeout(() => {
+      this._router.navigate(['/payment']);
+  }, 1000);
   }
 
   redirectChat(){

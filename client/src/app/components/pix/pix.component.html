@@ -1,0 +1,14 @@
+<h1>Escaneie o QR Code ou copie o link para o pagamento 💵</h1>
+
+<div class="feature">
+      <img src="assets/images/QR.png" alt="">
+</div>
+<div class="codepix">
+<p>00020126360014BR.GOV.BCB.PIX0114+551196720445052040000530398654040.015802BR5925 PIZZABOTAPP6009 SAOPAULO62070503***6304B75B</p>
+<img (click)="paymentGotConfirmed()" src="assets/images/copy.png" alt="">
+</div>
+<p>O pagamento deve ser efetuado dentro de <span>{{minutes | number: '2.0'}}:{{seconds | number: '2.0'}}</span> minutos</p>
+<br><br>
+<button mat-stroked-button class="btnCancel" (click)="redirectChat()">Refazer Pedido</button>
+<br>
+<button mat-stroked-button class="btnCancel" (click)="redirectPay()">Mudar forma de pagamento</button>

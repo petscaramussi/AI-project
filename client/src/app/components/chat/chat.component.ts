@@ -39,6 +39,7 @@ export class ChatComponent {
     nomeUser = '';
     pedidoUser = '';
     bebidaUser = '';
+    enderecoUser = '';
 
   
 
@@ -49,6 +50,16 @@ export class ChatComponent {
 
     onUpdateMessage(): void {
         switch (this.controler) {
+            // endereco
+            case 4:
+                this.msgsUser.push({ nick: 'user', msg: this.userSeparatedMsg });
+                this.enderecoUser = this.userSeparatedMsg;
+                this.localStorageSet();
+                this.inputCleanAndDown();
+                this.msgsUser.push({ nick: 'bot', msg: ` ✔️ pedido finalizado` });
+                console.log('nome: ' + this.nomeUser + ' | pedido: ' + this.pedidoUser + ' | bebida: ' + this.bebidaUser + ' | endereco: ' + this.enderecoUser);
+                this.showMessage();
+            break;
             case 3:
                 this.msgsUser.push({ nick: 'user', msg: this.userSeparatedMsg });
 
@@ -56,13 +67,10 @@ export class ChatComponent {
                     this.bebidaUser = this.userSeparatedMsg;
                     this.inputCleanAndDown();
                     this.msgsUser.push({ nick: 'bot', msg: `certo, anotado` });
-                    this.msgsUser.push({ nick: 'bot', msg: ` ✔️ pedido finalizado` });
-                    console.log(this.nomeUser, this.pedidoUser, this.bebidaUser);
-                    //set user option on local storage
-                    this.localStorageSet();
-                    this.showMessage();
-                    console.log('nome: ' + this.nomeUser + ' | pedido: ' + this.pedidoUser + ' | bebida: ' + this.bebidaUser);
 
+                    this.msgsUser.push({ nick: 'bot', msg: `Agora, para finalizar, digire seu endereço para entrega 🏍 🏠` });
+                    this.controler = 4;
+                   
                 }
                 else this.errorMessage();
 
@@ -83,14 +91,15 @@ export class ChatComponent {
                 }
                 else if (this.userSeparatedMsg == 'não') {
                     this.inputCleanAndDown();
-                    this.msgsUser.push({ nick: 'bot', msg: ` ✔️ pedido finalizado` });
+                    this.msgsUser.push({ nick: 'bot', msg: `ok.` });
                     console.log(this.nomeUser, this.pedidoUser, this.bebidaUser);
                     this.bebidaUser = '0';
-                    this.localStorageSet();
-                    this.showMessage();
+                    //this.showMessage();
                     // nomeUser = '';
                     //pedidoUser = '';
                     //bebidaUser = '';
+                    this.msgsUser.push({ nick: 'bot', msg: `Agora, para finalizar, digire seu endereço para entrega 🏍 🏠` });
+                    this.controler = 4;
                 }
                 else if (this.userSeparatedMsg != 'sim' && this.userSeparatedMsg != 'não') this.errorMessage();
 
@@ -155,5 +164,6 @@ export class ChatComponent {
         localStorage.setItem("nomeUser", this.nomeUser);
         localStorage.setItem("pedidoUser", this.pedidoUser);
         localStorage.setItem("bebidaUser", this.bebidaUser);
+        localStorage.setItem("enderecoUser", this.enderecoUser);
     }
 }
